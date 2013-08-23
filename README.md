@@ -1,4 +1,4 @@
-ncsulibraries-drush-local
+drush-local
 =========================
 
-Local Development Customizations for the NCSU Libraries Drupal Instance
+Local Development Customizations for Drush
