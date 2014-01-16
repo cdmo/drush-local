@@ -7,10 +7,10 @@
  * that intitiates sql-sync command.
  */
 function drush_policy_sql_sync_validate($source = NULL, $destination = NULL) {
-  if ($destination == '@prod' || $destination == '@ncsulib.prod') {
+  if ($destination == '@prod' || $destination == '@yoursite.prod') {
     return drush_set_error(dt('Per ~/.drush/policy.drush.inc, you may never overwrite the production database.'));
   }
-  if ($destination == '@stage' || $destination == '@ncsulib.stage'){
+  if ($destination == '@stage' || $destination == '@yoursite.stage'){
     return drush_set_error(dt('Per ~/.drush/policy.drush.inc, you may never overwrite the staging database.'));
   }
 }
