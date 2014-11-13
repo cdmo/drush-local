@@ -2,13 +2,13 @@
 /**
  * @file
  * Custom Drush integration.
- * Heavy borrowing from http://grovestreetstudios.com/blog/2013/08/custom-drush-command.html
  */
 
 /**
  * Implements hook_drush_command().
  *
- * Single command used to configure local development environment
+ * @return
+ *   An associative array describing your command(s).
  */
 function localdev_drush_command() {
   return array(
@@ -23,10 +23,12 @@ function localdev_drush_command() {
  */
 function drush_localdev_golocal() {
   // Enable dev friendly modules.
-  module_enable(array('devel', 'coder', 'diff'), TRUE);
+  $enable = array('devel', 'coder', 'diff', 'schema', 'hacked');
+  module_enable($enable, TRUE);
+  drush_log(dt('Modules enabled: @modules', array('@modules' => implode(', ', $enable))), 'ok');
 
   // Disable any production modules that you don't want to run locally
-  $disable = array('securelogin', 'linkchecker');
+  $disable = array('securelogin', 'linkchecker', 'sirsi_parser');
   module_disable($disable);
   drush_log(dt('Modules disabled: @modules', array('@modules' => implode(', ', $disable))), 'ok');
 
@@ -34,6 +36,10 @@ function drush_localdev_golocal() {
   if(module_exists('devel')) {
     user_role_grant_permissions(1, array('access devel information'));
     user_role_grant_permissions(2, array('access devel information'));
+    user_role_grant_permissions(2, array('switch users'));
+    user_role_grant_permissions(2, array('administer schema'));
+    user_role_grant_permissions(1, array('view diffs of changed files'));
+    user_role_grant_permissions(2, array('view diffs of changed files'));
   }
 
   // Set some dev-friendly settings
