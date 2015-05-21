@@ -23,14 +23,14 @@ function localdev_drush_command() {
  */
 function drush_localdev_golocal() {
   // Enable dev friendly modules.
-  $enable = array('devel', 'coder', 'diff', 'schema', 'hacked');
+  $enable = array('devel', 'coder', 'diff', 'schema', 'hacked', 'dblog');
   module_enable($enable, TRUE);
   drush_log(dt('Modules enabled: @modules', array('@modules' => implode(', ', $enable))), 'ok');
 
   // Disable any production modules that you don't want to run locally
-  $disable = array('securelogin', 'linkchecker', 'sirsi_parser');
-  module_disable($disable);
-  drush_log(dt('Modules disabled: @modules', array('@modules' => implode(', ', $disable))), 'ok');
+  // $disable = array();
+  // module_disable($disable);
+  // drush_log(dt('Modules disabled: @modules', array('@modules' => implode(', ', $disable))), 'ok');
 
   // Allow everyone to see devel messages like kpr()
   if(module_exists('devel')) {
