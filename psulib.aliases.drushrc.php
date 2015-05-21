@@ -14,7 +14,7 @@ $aliases['live'] = array (
   '#stage' => '@ncsulib.stage',
   'path-aliases' => array(
     '%files' => '/path/to/drupal/sites/default/files',
-    '%dump-dir' => '/etc/drush/dumps/',
+    '%dump-dir' => '/etc/drush/dumps',
     '%drush-script' => '/path/to/drush'
   ),
   'databases' =>
@@ -39,7 +39,7 @@ $aliases['dev'] = array (
   '#live' => '@live',
   'path-aliases' => array(
     '%files' => '/path/to/drupal/sites/default/files', // needs to be set
-    '%dump-dir' => '/etc/drush/dumps/',
+    '%dump-dir' => '/etc/drush/dumps',
     '%drush-script' => '/path/to/drush', // needs to be set
     '%root' => '/path/to/drupal/root' // needs to be set
   ),
