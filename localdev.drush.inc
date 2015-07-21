@@ -23,7 +23,7 @@ function localdev_drush_command() {
  */
 function drush_localdev_golocal() {
   // Enable dev friendly modules.
-  $enable = array('devel', 'coder', 'diff', 'schema', 'hacked', 'dblog');
+  $enable = array('devel', 'coder', 'diff', 'schema', 'hacked', 'dblog', 'security_review');
   module_enable($enable, TRUE);
   drush_log(dt('Modules enabled: @modules', array('@modules' => implode(', ', $enable))), 'ok');
 
